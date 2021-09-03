@@ -1,0 +1,6 @@
+bin
+obj
+token.txt
+GoogleCloudKey_discord-translator.json
+bin/Debug/net5.0/token.txt
+bin/Debug/net5.0/GoogleCloudKey_discord-translator.json
