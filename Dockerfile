@@ -5,15 +5,15 @@ WORKDIR /app
 # Copy the CSPROJ file and restore any dependencies (via NUGET)
 COPY *.csproj ./
 RUN dotnet restore
+COPY token.txt /app/bin/Release/net5.0/
+COPY GoogleCloudKey_discord-translator.json /app/bin/Release/net5.0/
 
 # Copy the project files and build our release
 COPY . ./
-RUN dotnet public -C Release -o out
-COPY token.txt /bin/Release/net5.0/
-COPY GoogleCloudKey_discord-translator.json /bin/Release/net5.0/
+RUN dotnet publish -c Release -o out
 
 # Generic runtime image
-FROM mcr.microsoft.com/dotnet/aspnet:3.1
+FROM mcr.microsoft.com/dotnet/runtime:5.0
 
 WORKDIR /app
 
