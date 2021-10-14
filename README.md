@@ -21,11 +21,24 @@ dotnet run
 # or build it and run the dll
 dotnet build -c Release # Only once
 dotnet run bin/Release/net5.0/DiscordTranslator.dll
+
 # or if you are using windows
 cd bin/Release/net5.0
 DiscordTranslator.exe
 # Keep in mind that you have to put token.txt and google cloud authentication in the same folder
 # as the executable or dll is
+```
+
+## Docker Usage
+
+To build and run the docker image.
+```bash
+# If you already downloaded your google cloud authentication and have put it in the folder where the executable is,
+# put it back in the folder where Dockerfile is, rename it to match with the GOOGLE_APPLICATION_CREDENTIALS
+# envrionment variable in Program.cs.
+# Also put the token.txt file to the folder where Dockerfile is.
+docker build -t "your preffered name" .
+docker run "your preffered name"
 ```
 
 # Hope you enjoy this ;)
