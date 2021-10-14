@@ -5,8 +5,6 @@ WORKDIR /app
 # Copy the CSPROJ file and restore any dependencies (via NUGET)
 COPY *.csproj ./
 RUN dotnet restore
-COPY token.txt /app/bin/Release/net5.0/
-COPY GoogleCloudKey_discord-translator.json /app/bin/Release/net5.0/
 
 # Copy the project files and build our release
 COPY . ./
@@ -18,4 +16,6 @@ FROM mcr.microsoft.com/dotnet/runtime:5.0
 WORKDIR /app
 
 COPY --from=build-env /app/out .
+COPY ./token.txt /app/token.txt
+COPY ./GoogleCloudKey_discord-translator.json /app/GoogleCloudKey_discord-translator.json
 ENTRYPOINT ["dotnet", "DiscordTranslator.dll"]
